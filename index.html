@@ -4,14 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Who's That Pokemon?!</title>
 </head>
 <body>
     <div class="content-container">
         <h1>Who's That Pokemon?!</h1>
+        <button id="play-btn">PLAY</button>
+        <div class="pokemon-content">
+            <div id="win-streak">Win Streak: 10</div>
+            <img src="https://images.unsplash.com/photo-1578008177941-ebe361d6bb17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" id="pokemon-img"></img>
+            <div id="pokemon-info">
+                <ul id="info-list">
+                    <!-- dynamically creat this ul w/ JS -->
+                    <li>Name:</li>
+                    <li>Type:</li>
+                    <li>Generation</li>
+                    <li>Ability</li>
+                    <li>Stats</li>
+                    <li>BST</li>
+                </ul>
+            </div>
+        </div>
+        <div id="user-input-seciton">
+             <form id="book-form">
+          
+                <label for="user-input">Enter your guess:</label>
+                <input type="text" id="user-input" name="name" placeholder="some pokemon...">
+
+                <input type="submit" value="Submit"/>
+            </form>
+            <!-- dynamically change and show/hide message based on user answer -->
+            <p>Message to user w/ wrong or correct</p>
+      
+        </div>
 
 
     </div>
     
 </body>
+
+<!--pokeball image address: https://images.unsplash.com/photo-1542779283-429940ce8336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80 -->
 </html>
