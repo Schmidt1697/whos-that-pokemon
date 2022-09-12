@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
     <title>Who's That Pokemon?!</title>
 </head>
 <body>
@@ -15,14 +16,23 @@
             <div id="win-streak">Win Streak: 10</div>
             <img src="https://images.unsplash.com/photo-1578008177941-ebe361d6bb17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" id="pokemon-img"></img>
             <div id="pokemon-info">
-                <ul id="info-list">
+                <ul class="hidden" id="info-list">
                     <!-- dynamically creat this ul w/ JS -->
-                    <li>Name:</li>
-                    <li>Type:</li>
-                    <li>Generation</li>
-                    <li>Ability</li>
-                    <li>Stats</li>
-                    <li>BST</li>
+                    <li id="name">Name:</li>
+                    <li id="type">Type:</li>
+                    <li id="gen">Generation</li>
+                    <li id="ability">Ability</li>
+                    <li id="stats">Stats
+                        <ul id="stat-list">
+                            <li id="hp">HP: </li>
+                            <li id="att">Attack: </li>
+                            <li id="def">Defense:</li>
+                            <li id="spa">Special Attack: </li>
+                            <li id="spd">Special Defense: </li>
+                            <li id="spe">Speed: </li>
+                        </ul>
+                    </li>
+                    <li id="bst">BST: </li>
                 </ul>
             </div>
         </div>
