@@ -160,15 +160,6 @@ h1{
 
 }
 
-/* 
-#answer-msg{
-    font-family: var(--vg-font);
-    font-size: 3rem;
-    color: var(--main-red);
-    text-align: center;
-    
-} */
-
 
 /* Answer response - right or wrong */
 
@@ -183,6 +174,21 @@ h1{
     font-size: 3rem;
     color: var(--main-red);
     text-align: center;
+}
+
+/* See correct pokemon list */
+#correctAnswers{
+    
+}
+#correctAnswers p{
+   font-family: var(--pkmn-font); 
+   font-size: 1.5rem;
+   color: var(--main-yellow);
+}
+
+#yourPkmn-Btn{
+
+
 }
 
 .hidden{
