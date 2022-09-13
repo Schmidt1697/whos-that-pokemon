@@ -2,6 +2,7 @@ playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener('click', play);
 let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
+let currPkmnId = 0;
 
 function play(){
     answerForm.classList.remove('hidden')
@@ -9,13 +10,15 @@ function play(){
     answMsg.classList.add('hidden')
 
     const randPkmnId = Math.floor(Math.random() * 898) +1;
+    currPkmnId = randPkmnId;
+    //const randPkmnId = 718;
     fetch(`https://pokeapi.co/api/v2/pokemon/${randPkmnId}`)
     .then(res => res.json())
     .then(pkmn => playGame(pkmn))
 }
 
 function playGame(pkmn){
-    const pkmnName = pkmn.name
+    let pkmnName = pkmn.name
     const pkmnImg = document.querySelector("#pokemon-img")
     pkmnImg.src = pkmn.sprites.other['official-artwork']['front_default']
 
@@ -55,53 +58,67 @@ function playGame(pkmn){
 
     const liStats = document.querySelector('#stats')
     const liHp = document.querySelector('#hp')
-    liHp.textContent += pkmn.stats[0]['base_stat']
+    liHp.textContent = "HP: " + pkmn.stats[0]['base_stat']
     const liAtt = document.querySelector('#att')
-    liAtt.textContent += pkmn.stats[1]['base_stat']
+    liAtt.textContent = "Attack: " + pkmn.stats[1]['base_stat']
     const liDefense = document.querySelector('#defense')
-    liDefense.textContent += ' ' + pkmn.stats[2]['base_stat']
+    liDefense.textContent = "Defense: " + pkmn.stats[2]['base_stat']
     const liSpa = document.querySelector('#spa')
-    liSpa.textContent += pkmn.stats[3]['base_stat']
+    liSpa.textContent = "Special Attack: " + pkmn.stats[3]['base_stat']
     const liSpd = document.querySelector('#spd')
-    liSpd.textContent += pkmn.stats[4]['base_stat']
+    liSpd.textContent = "Special Defense: " + pkmn.stats[4]['base_stat']
     const liSpeed = document.querySelector('#speed')
-    liSpeed.textContent += pkmn.stats[5]['base_stat']
+    liSpeed.textContent = "Speed: " + pkmn.stats[5]['base_stat']
     let bst = 0;
     const liBst = document.querySelector('#bst')
     pkmn.stats.forEach(stat => {
         bst += stat['base_stat']
     })
-    liBst.textContent += bst;
+    liBst.textContent = "BST: " + bst;
 
-    console.log(pkmn.name)
-    
+    console.log(pkmnName)
+
     ////get user info from submit and compare to pkmn name
-    const handleAnswer = (e) => {
-        e.preventDefault();
-        const newAnswer = e.target.name.value;
-    
-        answerForm.classList.add('hidden')
-        playBtn.classList.remove('hidden')
 
-        if(newAnswer === pkmn.name){
-            //show Pokemon Name
-            liName.textContent = pkmnName.charAt(0).toUpperCase() + pkmnName.slice(1);
-            
-            rightAnswerMsg();
-            //add 1 to win-streak
-
-            //push correct name/id to db.json
-
-        } else {
-            wrongAnswerMsg()
-
-        } 
-        answerForm.reset()   
-    }
     //Event Listener - Answer Form
     answerForm.addEventListener('submit', handleAnswer);
     
     
+    }
+    const handleAnswer = (e) => {
+
+        e.preventDefault();
+
+        fetch(`https://pokeapi.co/api/v2/pokemon-species/${currPkmnId}`)
+        .then(res => res.json())
+        .then(newPkmn => {
+            let realAnswer = '';
+            realAnswer = newPkmn.name.replace('-', '')
+            let newAnswer = e.target.name.value.toLowerCase()
+            console.log(realAnswer + ` ` + newAnswer)
+    
+            answerForm.classList.add('hidden')
+            playBtn.classList.remove('hidden')
+
+            if(newAnswer === realAnswer){
+                //show Pokemon Name
+                liName = document.querySelector('#name')
+                liName.textContent = realAnswer.charAt(0).toUpperCase() + realAnswer.slice(1);
+                
+                rightAnswerMsg();
+                //add 1 to win-streak
+
+                //push correct name/id to db.json
+
+            } else {
+                wrongAnswerMsg()
+
+            } 
+            answerForm.reset()   
+    
+    
+            
+        })
     }
 
     //Messages for right/wrong answers
