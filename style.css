@@ -75,7 +75,6 @@ h1{
 
 #pokemon-img{
     height: 30rem;
-    width: 40rem;
     padding: 2rem;
 
 
@@ -93,6 +92,14 @@ h1{
 }
 #info-list li#name{
     font-size: 2rem;
+}
+
+#pkmn-stats{
+    font-size: .65rem;
+}
+
+#stat-list{
+    list-style: none;
 }
 
 /* user submit area */
