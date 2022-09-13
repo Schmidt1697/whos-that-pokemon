@@ -54,12 +54,12 @@
             </form>
             <!-- dynamically change and show/hide message based on user answer -->
             <p class="hidden" id="answer-msg">Message to user w/ wrong or correct</p>
-            <div id="correctAnswers">
+            <div class ="hidden" id="see-list">
                 <p>See what pokemon you guessed right!</p>
-                <button id="yourPkmn-Btn">Your Pokemon</button>
+                <button id="yourPkmn-btn">Your Pokemon</button>
             </div>
-                <div id="modal" class="correct-list-modal">
-                    <ul id="correct-list">
+                <div id="modal" class="hidden">
+                    <ul id="pkmn-list">
                     </ul>
         
                 </div>
@@ -68,8 +68,8 @@
 
 
     </div>
+    <div class="overlay hidden"></div>
     
 </body>
 
-<!--pokeball image address: https://images.unsplash.com/photo-1542779283-429940ce8336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80 -->
 </html>

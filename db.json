@@ -1,132 +1,16 @@
 {
   "pokemon": [
     {
-      "name": "ditto",
-      "id": "132"
+      "name": "mareep",
+      "id": 179
     },
     {
-      "name": "sobble",
-      "id": 816
+      "name": "dragapult",
+      "id": 887
     },
     {
-      "name": "pikachu",
-      "id": 25
-    },
-    {
-      "name": "dragalge",
-      "id": 691
-    },
-    {
-      "name": "deoxys",
-      "id": 386
-    },
-    {
-      "name": "dratini",
-      "id": 147
-    },
-    {
-      "name": "salandit",
-      "id": 757
-    },
-    {
-      "name": "typhlosion",
-      "id": 157
-    },
-    {
-      "name": "thwackey",
-      "id": 811
-    },
-    {
-      "name": "regidrago",
-      "id": 895
-    },
-    {
-      "name": "sandaconda",
-      "id": 844
-    },
-    {
-      "name": "lunatone",
-      "id": 337
-    },
-    {
-      "name": "polteageist",
-      "id": 855
-    },
-    {
-      "name": "meowstic",
-      "id": 678
-    },
-    {
-      "name": "kyurem",
-      "id": 646
-    },
-    {
-      "name": "staraptor",
-      "id": 398
-    },
-    {
-      "name": "scraggy",
-      "id": 559
-    },
-    {
-      "name": "frosmoth",
-      "id": 873
-    },
-    {
-      "name": "krabby",
-      "id": 98
-    },
-    {
-      "name": "cubchoo",
-      "id": 613
-    },
-    {
-      "name": "grubbin",
-      "id": 736
-    },
-    {
-      "name": "makuhita",
-      "id": 296
-    },
-    {
-      "name": "diglett",
-      "id": 50
-    },
-    {
-      "name": "steelix",
-      "id": 208
-    },
-    {
-      "name": "sigilyph",
-      "id": 561
-    },
-    {
-      "name": "klink",
-      "id": 599
-    },
-    {
-      "name": "cosmog",
-      "id": 789
-    },
-    {
-      "name": "dusknoir",
-      "id": 477
-    },
-    {
-      "name": "bellossom",
-      "id": 182
-    },
-    {
-      "name": "dewpider",
-      "id": 751
-    },
-    {
-      "name": "hawlucha",
-      "id": 701
-    },
-    {
-      "name": "shedinja",
-      "id": 292
+      "name": "orbeetle",
+      "id": 826
     }
   ]
 }
