@@ -1,16 +1,22 @@
 
-body{
-    background-color: rgb(82, 82, 203);
-    color: white;
+:root{
+    --main-red: #FF1F20;
+    --main-blue: #353B81;
+    --main-white: #FFFFFF;
+    --main-yellow: #FBD744;
+    --pkmn-font: 'Pokemon Hollow', sans-serif;
+    --vg-font: 'Press Start 2P', cursive;
+    --vg-font2: 'Raleway', sans-serif;
+}
 
+body{
+    background-color: var(--main-blue);
+    color: white;
 
 }
 
+
 .content-container{
-    /* background-image:url(images/pokeball.jpg);
-    background-size: 800px 500px;
-    background-repeat: no-repeat;
-    background-position: center; */
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,8 +29,32 @@ body{
 
 h1{
     font-size: 5rem;
+    font-family: var(--pkmn-font);
+    color: var(--main-white);
 
 }
+
+#play-btn{
+    height: 6rem;
+    width: 12rem;
+    font-family: var(--vg-font);
+    font-size: 2.5rem;
+    color: var(--main-white);
+    outline: solid 5px black;
+    background-color: var(--main-red);
+    border-radius: 7px;
+    transition: 0.2s ease-in-out;
+    
+
+}
+
+#play-btn:hover{
+    font-weight: bold;
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+/* Pokemon info/Middle section */
 
 .pokemon-content{
     display: flex;
@@ -32,29 +62,98 @@ h1{
     justify-content:space-between;
     align-content: center;
     align-items: center;
+    max-width: 1600px;
 
 }
 
 #win-streak{
-    width: 10rem;
+    width: 15rem;
     text-align: center;
+   font-family: var(--vg-font);
+    font-size: 1.5rem;
 }
 
 #pokemon-img{
     height: 30rem;
+    width: 40rem;
     padding: 2rem;
+
 
 }
 
 #info-list{
   list-style: none;
-  width: 10rem;
-  text
+  width: 15rem;
+
+  font-family: var(--vg-font);
 }
 
 #info-list li{
+    padding-top: 0.8rem;
+}
+#info-list li#name{
+    font-size: 2rem;
+}
+
+/* user submit area */
+#user-input-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 50rem;
+    
+    
+}
+#pkmn-form label{
+    font-family: var(--pkmn-font);
+    font-size: 2rem;
+    
+}
+
+#user-input{
+    background-color: black;
+    color: rgb(202, 202, 192);
+    outline: 1px solid var(--main-white);
+    border-radius: 7px;
+    font-size: 1rem;
+    height: 2.2rem;
+    width: 10rem;
+    margin: 0 1rem;
+   
+    
+}
+
+#submit-btn{
+    font-family: var(--vg-font);
+    font-size: 1rem;
+    color: var(--main-white);
+    outline: solid 3px black;
+    background-color: var(--main-red);
+    border-radius: 7px;
+    padding: 0.9rem;
+    transition: 0.2s ease-in-out;
+    
+}
+#submit-btn:hover{
+    font-weight: bold;
+    transform: scale(1.1);
+    cursor: pointer;
 
 }
+
+
+#user-input-section p{
+    font-family: var(--vg-font);
+    font-size: 3rem;
+    color: var(--main-red);
+    text-align: center;
+    
+}
+
+
+
 
 .hidden{
     visibility: hidden;
