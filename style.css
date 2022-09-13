@@ -160,17 +160,30 @@ h1{
 
 }
 
-
-#user-input-section p{
+/* 
+#answer-msg{
     font-family: var(--vg-font);
     font-size: 3rem;
     color: var(--main-red);
     text-align: center;
     
+} */
+
+
+/* Answer response - right or wrong */
+
+.right{
+    font-family: var(--vg-font);
+    font-size: 3rem;
+    color: rgb(20, 171, 20);
+    text-align: center;
 }
-
-
-
+.wrong{
+    font-family: var(--vg-font);
+    font-size: 3rem;
+    color: var(--main-red);
+    text-align: center;
+}
 
 .hidden{
     visibility: hidden;

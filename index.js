@@ -1,10 +1,13 @@
 playBtn = document.querySelector("#play-btn");
-playBtn.addEventListener('click', play)
+playBtn.addEventListener('click', play);
+let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
 
 function play(){
     answerForm.classList.remove('hidden')
     playBtn.classList.add("hidden")
+    answMsg.classList.add('hidden')
+
     const randPkmnId = Math.floor(Math.random() * 898) +1;
     fetch(`https://pokeapi.co/api/v2/pokemon/${randPkmnId}`)
     .then(res => res.json())
@@ -18,7 +21,7 @@ function playGame(pkmn){
 
     //populate info list
     const liName = document.querySelector('#name')
-    liName.textContent = pkmnName.charAt(0).toUpperCase() + pkmnName.slice(1);
+    liName.textContent = '???'; //start w. hidden name
     const liType = document.querySelector('#type')
 
     liType.textContent = pkmn.types[0].type.name;
@@ -75,23 +78,25 @@ function playGame(pkmn){
     ////get user info from submit and compare to pkmn name
     const handleAnswer = (e) => {
         e.preventDefault();
-        console.log(e.target.name.value);
-    
         const newAnswer = e.target.name.value;
     
         answerForm.classList.add('hidden')
         playBtn.classList.remove('hidden')
 
         if(newAnswer === pkmn.name){
-            console.log('right') 
-            //show pkmn name
-            //show correct message to user
+            //show Pokemon Name
+            liName.textContent = pkmnName.charAt(0).toUpperCase() + pkmnName.slice(1);
+            
+            rightAnswerMsg();
             //add 1 to win-streak
-            //push correct name/id to db.json
-        } else {
-            console.log('wrong')
 
-        }    
+            //push correct name/id to db.json
+
+        } else {
+            wrongAnswerMsg()
+
+        } 
+        answerForm.reset()   
     }
     //Event Listener - Answer Form
     answerForm.addEventListener('submit', handleAnswer);
@@ -99,6 +104,18 @@ function playGame(pkmn){
     
     }
 
+    //Messages for right/wrong answers
+    function rightAnswerMsg() {
+        answMsg.textContent = "CORRECT!!!";
+        answMsg.classList.add('right');
+        answMsg.classList.remove('hidden');
+    }
+
+    function wrongAnswerMsg() {
+        answMsg.textContent = "WRONG!!! Click Play to restart.";
+        answMsg.classList.add('wrong');
+        answMsg.classList.remove('hidden');
+    }
 
 
 
