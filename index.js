@@ -2,6 +2,7 @@ playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener('click', play);
 let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
+const yourPkmnBtn = document.querySelector("#yourPkmn-Btn");
 let currPkmnId = 0;
 
 function play(){
@@ -95,7 +96,7 @@ function playGame(pkmn){
             let realAnswer = '';
             realAnswer = newPkmn.name.replace('-', '')
             let newAnswer = e.target.name.value.toLowerCase()
-            console.log(realAnswer + ` ` + newAnswer)
+            // console.log(realAnswer + ` ` + newAnswer)
     
             answerForm.classList.add('hidden')
             playBtn.classList.remove('hidden')
@@ -109,9 +110,16 @@ function playGame(pkmn){
                 //add 1 to win-streak
 
                 //push correct name/id to db.json
+                let realAnsData = {
+                    name: realAnswer,
+                    id: currPkmnId
+                }
+                
+                sendPkmnInfo('http://localhost:3000/pokemon', realAnsData)
 
             } else {
                 wrongAnswerMsg()
+                yourPkmnBtn.classList.remove('hidden');
 
             } 
             answerForm.reset()   
@@ -135,21 +143,16 @@ function playGame(pkmn){
     }
 
 
-
-
-//   // Data to store in db.json if user is correct
-//   let postData = {
-//     name: pkmn.name,
-//     id: pkmn.id
-// }
-
 // //POST REQUEST to send pkmn name to 
-// fetch('http://localhost:3000/pokemon', {
-//     method: 'POST',
-//        headers: {
-//                 'Content-Type': 'application/json',
-//               },
-//               body: JSON.stringify(postData),
-// })
-// .then(res => res.json())
-// .catch(console.error)
+function sendPkmnInfo(url, data){
+    fetch(url, {
+        method: 'POST',
+           headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .catch(console.error)
+
+}
