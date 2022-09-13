@@ -2,13 +2,19 @@ playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener('click', play);
 let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
-const yourPkmnBtn = document.querySelector("#yourPkmn-Btn");
+const yourPkmnBtn = document.querySelector("#yourPkmn-btn");
+const seeYourList = document.querySelector("#see-list")
+const yourPkmnModal = document.querySelector("#modal")
+const yourPkmnList = document.querySelector("#pkmn-list")
+const overlay = document.querySelector(".overlay")
 let currPkmnId = 0;
 
 function play(){
     answerForm.classList.remove('hidden')
     playBtn.classList.add("hidden")
     answMsg.classList.add('hidden')
+    seeYourList.classList.add('hidden')
+    yourPkmnModal.classList.add('hidden')
 
     const randPkmnId = Math.floor(Math.random() * 898) +1;
     currPkmnId = randPkmnId;
@@ -119,7 +125,8 @@ function playGame(pkmn){
 
             } else {
                 wrongAnswerMsg()
-                yourPkmnBtn.classList.remove('hidden');
+                seeYourList.classList.remove('hidden');
+                getCorrectPkmn('http://localhost:3000/pokemon')
 
             } 
             answerForm.reset()   
@@ -143,7 +150,7 @@ function playGame(pkmn){
     }
 
 
-// //POST REQUEST to send pkmn name to 
+// //POST REQUEST to send correct pkmn name to db.json
 function sendPkmnInfo(url, data){
     fetch(url, {
         method: 'POST',
@@ -156,3 +163,43 @@ function sendPkmnInfo(url, data){
     .catch(console.error)
 
 }
+
+
+
+//GET req to db.json to fill pkmn List
+function getCorrectPkmn(url){
+    fetch(url)
+    .then(res => res.json())
+    .then(pkmArr => {
+        console.log(pkmArr)
+        pkmArr.forEach(pkmn => fillPkmnList(pkmn))
+    }) 
+
+}
+
+//function to fill pkmn list w/ results from db.json
+function fillPkmnList(pkmn){
+    const liPkmn = document.createElement('li');
+    liPkmn.textContent = pkmn.name;
+    yourPkmnList.append(liPkmn)
+}
+
+//open
+function openPkmnList() {
+    yourPkmnModal.classList.remove('hidden');
+    overlay.classList.remove("hidden");
+};
+//close
+function closePkmnList(){
+yourPkmnModal.classList.add("hidden");
+overlay.classList.add("hidden");
+
+};
+
+//Event Listeners to open/close pkmn modal/box
+yourPkmnBtn.addEventListener('click', openPkmnList);
+overlay.addEventListener('click', closePkmnList);
+
+
+
+
