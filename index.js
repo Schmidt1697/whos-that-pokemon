@@ -4,6 +4,9 @@ let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
 const yourPkmnBtn = document.querySelector("#yourPkmn-Btn");
 let currPkmnId = 0;
+let bestWinStreak = 0
+let currWinStreak = 0
+const winDiv = document.querySelector("#win-streak")
 
 function play(){
     answerForm.classList.remove('hidden')
@@ -131,12 +134,18 @@ function playGame(pkmn){
 
     //Messages for right/wrong answers
     function rightAnswerMsg() {
+        currWinStreak++;
+        if (bestWinStreak < currWinStreak){
+            bestWinStreak = currWinStreak
+            winDiv.textContent = `Best Win Streak: ${bestWinStreak}`
+        }
         answMsg.textContent = "CORRECT!!!";
         answMsg.classList.add('right');
         answMsg.classList.remove('hidden');
     }
 
     function wrongAnswerMsg() {
+        currWinStreak = 0
         answMsg.textContent = "WRONG!!! Click Play to restart.";
         answMsg.classList.add('wrong');
         answMsg.classList.remove('hidden');
