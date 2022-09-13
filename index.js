@@ -1,7 +1,9 @@
 playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener('click', play)
+const answerForm = document.querySelector("#pkmn-form");
 
 function play(){
+    answerForm.classList.remove('hidden')
     playBtn.classList.add("hidden")
     const randPkmnId = Math.floor(Math.random() * 898) +1;
     fetch(`https://pokeapi.co/api/v2/pokemon/${randPkmnId}`)
@@ -47,6 +49,7 @@ function playGame(pkmn){
         //liAbility.textContent += " " + abi.ability.name.replace('-', ' ') + "\r\n"
         //console.log(liAbility.textContent)
     })
+
     const liStats = document.querySelector('#stats')
     const liHp = document.querySelector('#hp')
     liHp.textContent += pkmn.stats[0]['base_stat']
@@ -67,5 +70,52 @@ function playGame(pkmn){
     })
     liBst.textContent += bst;
 
+    console.log(pkmn.name)
+    
+    ////get user info from submit and compare to pkmn name
+    const handleAnswer = (e) => {
+        e.preventDefault();
+        console.log(e.target.name.value);
+    
+        const newAnswer = e.target.name.value;
+    
+        answerForm.classList.add('hidden')
+        playBtn.classList.remove('hidden')
 
-}
+        if(newAnswer === pkmn.name){
+            console.log('right') 
+            //show pkmn name
+            //show correct message to user
+            //add 1 to win-streak
+            //push correct name/id to db.json
+        } else {
+            console.log('wrong')
+
+        }    
+    }
+    //Event Listener - Answer Form
+    answerForm.addEventListener('submit', handleAnswer);
+    
+    
+    }
+
+
+
+
+
+//   // Data to store in db.json if user is correct
+//   let postData = {
+//     name: pkmn.name,
+//     id: pkmn.id
+// }
+
+// //POST REQUEST to send pkmn name to 
+// fetch('http://localhost:3000/pokemon', {
+//     method: 'POST',
+//        headers: {
+//                 'Content-Type': 'application/json',
+//               },
+//               body: JSON.stringify(postData),
+// })
+// .then(res => res.json())
+// .catch(console.error)

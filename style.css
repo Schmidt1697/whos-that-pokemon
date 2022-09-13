@@ -12,6 +12,7 @@
 body{
     background-color: var(--main-blue);
     color: white;
+    max-height: 1000px;
 
 }
 
@@ -22,15 +23,18 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw; 
+    
 }
 
 h1{
     font-size: 5rem;
     font-family: var(--pkmn-font);
     color: var(--main-white);
+    margin-bottom: 0;
 
 }
 
@@ -38,7 +42,7 @@ h1{
     height: 6rem;
     width: 12rem;
     font-family: var(--vg-font);
-    font-size: 2.5rem;
+    font-size: 2.5vh;
     color: var(--main-white);
     outline: solid 5px black;
     background-color: var(--main-red);
@@ -76,6 +80,7 @@ h1{
 #pokemon-img{
     height: 30rem;
     padding: 2rem;
+    opacity: 0.8;
 
 
 }
@@ -88,18 +93,23 @@ h1{
 }
 
 #info-list li{
-    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
 }
 #info-list li#name{
     font-size: 2rem;
+   
 }
+#ability p{
+    margin: 0;
 
+}
 #pkmn-stats{
     font-size: .65rem;
 }
 
 #stat-list{
     list-style: none;
+    padding-top: 0.8rem;
 }
 
 /* user submit area */
