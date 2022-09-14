@@ -90,13 +90,9 @@ function playGame(pkmn){
 
     console.log(pkmnName)
 
-
-
     //Event Listener - Answer Form
     // answerForm.addEventListener('submit',(e) =>  handleAnswer(pkmnSprite, e));
     answerForm.addEventListener('submit', handleAnswer);
-    
-    
     }
     const handleAnswer = (e) => {
         
@@ -199,9 +195,12 @@ function getCorrectPkmn(url){
 function fillPkmnList(pkmn){
     const img = document.createElement('img');
     img.src = pkmn.sprite;
-    const p = document.createElement('p')
-    p.textContent = pkmn.name
-   yourPkmnList.append(img, p)
+    const imgCapt = document.createElement('figcaption')
+    imgCapt.textContent = pkmn.name
+    imgCapt.classList.add('img-capt')
+    const singPkmnDiv = document.createElement('div');
+    singPkmnDiv.append(img, imgCapt)
+   yourPkmnList.append(singPkmnDiv)
 }
 
 
