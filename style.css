@@ -25,9 +25,7 @@ body{
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 100vh;
     width: 100vw; 
-    max-height: 900px;
     max-width: 1100px;
     
 }
@@ -36,7 +34,8 @@ h1{
     font-size: 4rem;
     font-family: var(--pkmn-font);
     color: var(--main-white);
-    margin: 10rem 0 2rem 0 ;
+    text-align: center;
+    margin: 5rem 0 2rem 0 ;
    
     
 
@@ -44,9 +43,9 @@ h1{
 
 #play-btn{
     width: 10rem;
-    padding: 0.8rem;
+    padding: 1rem;
     font-family: var(--vg-font);
-    font-size: 2vh;
+    font-size: 1.7rem;
     color: var(--main-white);
     outline: solid 5px black;
     background-color: var(--main-red);
@@ -76,21 +75,20 @@ h1{
 #win-streak{
     width: 15rem;
     text-align: center;
-   font-family: var(--vg-font);
+    font-family: var(--vg-font);
     font-size: 1.5rem;
+    padding: 3rem 0;
 }
 
 #pokemon-img{
     height: 25rem;
     opacity: 0.8;
-
-
 }
 
 #info-list{
   list-style: none;
   width: 15rem;
-
+  padding: 3rem 0 0 0;
   font-family: var(--vg-font);
 }
 
@@ -114,34 +112,44 @@ h1{
     padding-top: 0.8rem;
 }
 
-/* user submit area */
+/* --------- user submit area -------*/
 #user-input-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
-    width: 50rem;
-    
-    
+    width: 70vw;  
+}
+
+#pkmn-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 #pkmn-form label{
     font-family: var(--pkmn-font);
     font-size: 2rem;
-    
+    text-align: center;
+   
 }
 
 #user-input{
+    font-family: var(--vg-font);
     background-color: black;
     color: rgb(202, 202, 192);
     outline: 1px solid var(--main-white);
     border-radius: 7px;
     font-size: 1rem;
     height: 2.2rem;
-    width: 10rem;
+    width: 12rem;
     margin: 0 1rem;
-   
-    
+}
+
+#user-input::placeholder{
+    font-size: 0.8rem;
 }
 
 #submit-btn{
@@ -153,27 +161,26 @@ h1{
     border-radius: 7px;
     padding: 0.8rem;
     transition: 0.2s ease-in-out;
-    
 }
 #submit-btn:hover{
     font-weight: bold;
     transform: scale(1.1);
     cursor: pointer;
-
 }
 
-
 /* Answer response - right or wrong */
+#answer-msg{
+    font-size: 2rem;
+    width: 50vw;
+}
 
 .right{
     font-family: var(--vg-font);
-    font-size: 3rem;
     color: rgb(20, 171, 20);
     text-align: center;
 }
 .wrong{
     font-family: var(--vg-font);
-    font-size: 2.5rem;
     color: var(--main-red);
     text-align: center;
 }
@@ -188,6 +195,7 @@ h1{
 #see-list p{
    font-family: var(--pkmn-font); 
    font-size: 1.5rem;
+   text-align: center;
    color: var(--main-yellow);
 }
 
@@ -201,26 +209,39 @@ h1{
     padding: 0.9rem;
     margin-bottom: 5rem;
     transition: 0.2s ease-in-out;
-
 }
 
 #yourPkmn-btn:hover{
     font-weight: bold;
     transform: scale(1.1);
     cursor: pointer;
-
 }
 
+/* -------- Inside pkmn box -------- */
 #pkmn-list{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
+    background-color: rgba(161, 201, 111, 0.8);
+    border-radius: 7px;
 }
 
+#pkmn-list div img{
+    padding: 0 0.5rem;
+}
+.img-capt{
+    text-align: center;
+    font-family: var(--vg-font);
+    font-size: 0.7rem;
+    padding-bottom: 1rem;
+    color: var(--main-yellow);
+
+}
 /* ---------Pokemon box/modal -------*/
 
 #modal{
-    background-color: rgba(229, 157, 13,0.7);;
+    background-color: rgba(85, 162, 103, 0.8);
     padding: 3vw;
     border-radius: 7px;
     width: 70%;
@@ -229,8 +250,8 @@ h1{
     transform: translate(-50%, -50%);
     position:fixed;
     z-index: 5;
-    max-width: 400px;
-    max-height: 300px;
+    max-width: 600px;
+    
 }
 
 
@@ -242,7 +263,7 @@ h1{
 	height: 100%;
     top: 0;
 	left: 0;
-	background-color: rgba(39, 35, 35, 0.4);
+	background-color: rgba(39, 35, 35, 0.6);
 	backdrop-filter: blur(5px);
 	z-index: 3;
 }
@@ -250,4 +271,64 @@ h1{
 
 .hidden{
     visibility: hidden;
+}
+
+
+/* -------MEDIA QUERIES ---------- */
+/* 
+Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {...}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media (min-width: 600px) {...} */
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...}
+Large devices (laptops/desktops, 992px and up) */ 
+@media (max-width: 1050px) {
+    #info-list li#name{
+        font-size: 1.8rem;
+       
+    }
+    
+}
+@media (max-width: 950px) {
+    .pokemon-content{
+        flex-direction: column;
+
+    }
+
+    #win-streak{
+        margin-top: 2rem;
+    }
+    #pkmn-form{
+        flex-direction: column;  
+    }
+
+    #pkmn-form label{
+        margin: 1rem 0;
+    }
+
+    #user-input{
+        margin-bottom: 1rem;
+    }
+        
+    
+}
+
+@media (max-width: 768px) {
+   #answer-msg{
+    width: 70vw;
+   }
+    
+}
+
+@media (max-width: 500px) {
+    h1{
+        font-size: 3rem;
+    }
+    #pokemon-img{
+        height: 20rem;
+        opacity: 0.8;
+    }
+
+
 }
