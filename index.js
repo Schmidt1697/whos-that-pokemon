@@ -90,21 +90,21 @@ function playGame(pkmn){
 
     console.log(pkmnName)
 
-    ////get user info from submit and compare to pkmn name
+
 
     //Event Listener - Answer Form
+    // answerForm.addEventListener('submit',(e) =>  handleAnswer(pkmnSprite, e));
     answerForm.addEventListener('submit', handleAnswer);
     
     
     }
     const handleAnswer = (e) => {
-
+        
         e.preventDefault();
 
         fetch(`https://pokeapi.co/api/v2/pokemon-species/${currPkmnId}`)
         .then(res => res.json())
         .then(newPkmn => {
-            console.log(newPkmn.shape.url)
             
             let realAnswer = '';
             realAnswer = newPkmn.name.replace('-', '')
@@ -114,27 +114,31 @@ function playGame(pkmn){
             answerForm.classList.add('hidden')
             playBtn.classList.remove('hidden')
 
-            if(newAnswer === realAnswer){
-                //show Pokemon Name
-                liName = document.querySelector('#name')
-                liName.textContent = realAnswer.charAt(0).toUpperCase() + realAnswer.slice(1);
-                
-                rightAnswerMsg();
-                //add 1 to win-streak
+            //show Pokemon Name
+            liName = document.querySelector('#name')
+            liName.textContent = realAnswer.charAt(0).toUpperCase() + realAnswer.slice(1);
 
-                //push correct name/id to db.json
-                let realAnsData = {
-                    
-                    name: realAnswer,
-                    id: currPkmnId,
-                }
+            if(newAnswer === realAnswer){
+                rightAnswerMsg();
+                fetch(`https://pokeapi.co/api/v2/pokemon/${currPkmnId}`)
+                .then(res => res.json())
+                .then(pkmn => { 
+                    let sprite = pkmn.sprites['front_default']
+                   
+                        //push correct name/id to db.json
+                    let realAnsData = {
+                        sprite: sprite,
+                        name: realAnswer,
+                        id: currPkmnId,
+                    }
                 
                 sendPkmnInfo('http://localhost:3000/pokemon', realAnsData)
+                })
 
             } else {
                 wrongAnswerMsg()
                 seeYourList.classList.remove('hidden');
-                getCorrectPkmn('http://localhost:3000/pokemon')
+                getCorrectPkmn('http://localhost:3000/pokemon');
 
             } 
             answerForm.reset()   
@@ -185,7 +189,7 @@ function getCorrectPkmn(url){
     fetch(url)
     .then(res => res.json())
     .then(pkmArr => {
-        // console.log(pkmArr)
+        yourPkmnList.innerHTML = ''
         pkmArr.forEach(pkmn => fillPkmnList(pkmn))
     }) 
 
@@ -193,12 +197,14 @@ function getCorrectPkmn(url){
 
 //function to fill pkmn list w/ results from db.json
 function fillPkmnList(pkmn){
-    console.log(pkmn)
-    
-    const imgPkmn = document.createElement('p');
-    imgPkmn.textContent = pkmn.name;
-    yourPkmnList.append(imgPkmn)
+    const img = document.createElement('img');
+    img.src = pkmn.sprite;
+    const p = document.createElement('p')
+    p.textContent = pkmn.name
+   yourPkmnList.append(img, p)
 }
+
+
 
 //open
 function openPkmnList() {
