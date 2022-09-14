@@ -1,4 +1,6 @@
-playBtn = document.querySelector("#play-btn");
+
+const body = document.querySelector("body")
+const playBtn = document.querySelector("#play-btn");
 playBtn.addEventListener('click', play);
 let answMsg = document.querySelector('#answer-msg');
 const answerForm = document.querySelector("#pkmn-form");
@@ -34,17 +36,16 @@ function playGame(pkmn){
     const pkmnImg = document.querySelector("#pokemon-img")
     pkmnImg.src = pkmn.sprites.other['official-artwork']['front_default']
 
-    //populate info list
+    //populate pkmn info list
     const liName = document.querySelector('#name')
     liName.textContent = '???'; //start w. hidden name
-    const liType = document.querySelector('#type')
 
+    const liType = document.querySelector('#type')
     liType.textContent = pkmn.types[0].type.name;
     liType.textContent = liType.textContent.charAt(0).toUpperCase() + liType.textContent.slice(1) 
     if(pkmn.types.length > 1){
         let type2 = pkmn.types[1].type.name
         type2 = type2.charAt(0).toUpperCase() + type2.slice(1)
-        //liType.textContent += ` / ${pkmn.types[1].type.name}` 
         liType.textContent += ` / ${type2}`
     }
     
@@ -64,11 +65,8 @@ function playGame(pkmn){
         const newAbi = document.createElement('p')
         newAbi.textContent = abi.ability.name.replace('-', ' ')
         liAbility.append(newAbi)
-        //liAbility.textContent += " " + abi.ability.name.replace('-', ' ') + "\r\n"
-        //console.log(liAbility.textContent)
     })
 
-    const liStats = document.querySelector('#stats')
     const liHp = document.querySelector('#hp')
     liHp.textContent = "HP: " + pkmn.stats[0]['base_stat']
     const liAtt = document.querySelector('#att')
@@ -91,9 +89,10 @@ function playGame(pkmn){
     console.log(pkmnName)
 
     //Event Listener - Answer Form
-    // answerForm.addEventListener('submit',(e) =>  handleAnswer(pkmnSprite, e));
     answerForm.addEventListener('submit', handleAnswer);
+
     }
+    //handle user input and compare to correct pkmn
     const handleAnswer = (e) => {
         
         e.preventDefault();
@@ -121,7 +120,7 @@ function playGame(pkmn){
                 .then(pkmn => { 
                     let sprite = pkmn.sprites['front_default']
                    
-                        //push correct name/id to db.json
+                    //push correct name/id to db.json
                     let realAnsData = {
                         sprite: sprite,
                         name: realAnswer,
@@ -134,13 +133,10 @@ function playGame(pkmn){
             } else {
                 wrongAnswerMsg()
                 seeYourList.classList.remove('hidden');
+                //GET req. from API
                 getCorrectPkmn('http://localhost:3000/pokemon');
-
             } 
-            answerForm.reset()   
-    
-    
-            
+            answerForm.reset()    
         })
     }
 
@@ -155,7 +151,6 @@ function playGame(pkmn){
         answMsg.classList.add('right');
         answMsg.classList.remove('hidden');
     }
-
     function wrongAnswerMsg() {
         currWinStreak = 0
         document.querySelector("#curr-streak").textContent = "Current Streak: 0"
@@ -165,7 +160,7 @@ function playGame(pkmn){
     }
 
 
-// //POST REQUEST to send correct pkmn name to db.json
+// //POST REQUEST to send right pkmn answer info to db.json
 function sendPkmnInfo(url, data){
     fetch(url, {
         method: 'POST',
@@ -179,8 +174,6 @@ function sendPkmnInfo(url, data){
 
 }
 
-
-
 //GET req to db.json to fill pkmn List
 function getCorrectPkmn(url){
     fetch(url)
@@ -192,7 +185,7 @@ function getCorrectPkmn(url){
 
 }
 
-//function to fill pkmn list w/ results from db.json
+//fill pkmn list w/ results from db.json
 function fillPkmnList(pkmn){
     const img = document.createElement('img');
     img.src = pkmn.sprite;
@@ -204,21 +197,22 @@ function fillPkmnList(pkmn){
    yourPkmnList.append(singPkmnDiv)
 }
 
-
-
-//open
+//open your pkmn
 function openPkmnList() {
     yourPkmnModal.classList.remove('hidden');
     overlay.classList.remove("hidden");
+    body.style = "overflow: hidden"
 };
-//close
+
+//close your pkmn
 function closePkmnList(){
 yourPkmnModal.classList.add("hidden");
 overlay.classList.add("hidden");
+body.style = "overflow: auto"
 
 };
 
-//Event Listeners to open/close pkmn modal/box
+//Event Listeners to open/close pkmn list/modal
 yourPkmnBtn.addEventListener('click', openPkmnList);
 overlay.addEventListener('click', closePkmnList);
 

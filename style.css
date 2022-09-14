@@ -35,7 +35,7 @@ h1{
     font-family: var(--pkmn-font);
     color: var(--main-white);
     text-align: center;
-    margin: 5rem 0 2rem 0 ;
+    margin: 2rem 0;
    
     
 
@@ -255,9 +255,10 @@ h1{
     position:fixed;
     z-index: 5;
     max-width: 600px;
-    
+    max-height: calc(100vh - 20%);
+    overflow: auto;
+   
 }
-
 
 /* 
 ----------Modal overlay ---------*/
@@ -279,14 +280,7 @@ h1{
 
 
 /* -------MEDIA QUERIES ---------- */
-/* 
-Extra small devices (phones, 600px and down)
-@media only screen and (max-width: 600px) {...}
-/* Small devices (portrait tablets and large phones, 600px and up) */
-/* @media (min-width: 600px) {...} */
-/* Medium devices (landscape tablets, 768px and up) */
-/* @media only screen and (min-width: 768px) {...}
-Large devices (laptops/desktops, 992px and up) */ 
+
 @media (max-width: 1050px) {
     #info-list li#name{
         font-size: 1.8rem;
