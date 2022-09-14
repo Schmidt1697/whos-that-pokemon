@@ -12,13 +12,13 @@
 body{
     background-color: var(--main-blue);
     color: white;
-    max-height: 1000px;
+    overflow-y: scroll;
 
 }
 
 
 .content-container{
-    margin: 0;
+    margin: 3rem auto;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -27,28 +27,31 @@ body{
     align-items: center;
     height: 100vh;
     width: 100vw; 
+    max-height: 900px;
+    max-width: 1100px;
     
 }
 
 h1{
-    font-size: 5rem;
+    font-size: 4rem;
     font-family: var(--pkmn-font);
     color: var(--main-white);
-    margin-bottom: 0;
+    margin: 10rem 0 2rem 0 ;
+   
+    
 
 }
 
 #play-btn{
-    height: 6rem;
-    width: 12rem;
+    width: 10rem;
+    padding: 0.8rem;
     font-family: var(--vg-font);
-    font-size: 2.5vh;
+    font-size: 2vh;
     color: var(--main-white);
     outline: solid 5px black;
     background-color: var(--main-red);
     border-radius: 7px;
     transition: 0.2s ease-in-out;
-    
 
 }
 
@@ -66,7 +69,7 @@ h1{
     justify-content:space-between;
     align-content: center;
     align-items: center;
-    max-width: 1600px;
+    max-width: 1100px;
 
 }
 
@@ -78,8 +81,7 @@ h1{
 }
 
 #pokemon-img{
-    height: 30rem;
-    padding: 2rem;
+    height: 25rem;
     opacity: 0.8;
 
 
@@ -149,7 +151,7 @@ h1{
     outline: solid 3px black;
     background-color: var(--main-red);
     border-radius: 7px;
-    padding: 0.9rem;
+    padding: 0.8rem;
     transition: 0.2s ease-in-out;
     
 }
@@ -171,7 +173,7 @@ h1{
 }
 .wrong{
     font-family: var(--vg-font);
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--main-red);
     text-align: center;
 }
@@ -197,6 +199,7 @@ h1{
     background-color: var(--main-red);
     border-radius: 7px;
     padding: 0.9rem;
+    margin-bottom: 5rem;
     transition: 0.2s ease-in-out;
 
 }
@@ -209,7 +212,9 @@ h1{
 }
 
 #pkmn-list{
-    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 /* ---------Pokemon box/modal -------*/

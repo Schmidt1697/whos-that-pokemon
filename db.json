@@ -1,16 +1,8 @@
 {
   "pokemon": [
     {
-      "name": "mareep",
-      "id": 179
-    },
-    {
-      "name": "dragapult",
-      "id": 887
-    },
-    {
-      "name": "orbeetle",
-      "id": 826
+      "name": "pawniard",
+      "id": 624
     }
   ]
 }

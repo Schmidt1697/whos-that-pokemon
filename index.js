@@ -16,6 +16,8 @@ function play(){
     answerForm.classList.remove('hidden')
     playBtn.classList.add("hidden")
     answMsg.classList.add('hidden')
+    ///////reset right and wrong after each answer //////////
+    answMsg.classList.remove('right', 'wrong')
     seeYourList.classList.add('hidden')
     yourPkmnModal.classList.add('hidden')
 
@@ -102,6 +104,8 @@ function playGame(pkmn){
         fetch(`https://pokeapi.co/api/v2/pokemon-species/${currPkmnId}`)
         .then(res => res.json())
         .then(newPkmn => {
+            console.log(newPkmn.shape.url)
+            
             let realAnswer = '';
             realAnswer = newPkmn.name.replace('-', '')
             let newAnswer = e.target.name.value.toLowerCase()
@@ -120,8 +124,9 @@ function playGame(pkmn){
 
                 //push correct name/id to db.json
                 let realAnsData = {
+                    
                     name: realAnswer,
-                    id: currPkmnId
+                    id: currPkmnId,
                 }
                 
                 sendPkmnInfo('http://localhost:3000/pokemon', realAnsData)
@@ -180,7 +185,7 @@ function getCorrectPkmn(url){
     fetch(url)
     .then(res => res.json())
     .then(pkmArr => {
-        console.log(pkmArr)
+        // console.log(pkmArr)
         pkmArr.forEach(pkmn => fillPkmnList(pkmn))
     }) 
 
@@ -188,9 +193,11 @@ function getCorrectPkmn(url){
 
 //function to fill pkmn list w/ results from db.json
 function fillPkmnList(pkmn){
-    const liPkmn = document.createElement('li');
-    liPkmn.textContent = pkmn.name;
-    yourPkmnList.append(liPkmn)
+    console.log(pkmn)
+    
+    const imgPkmn = document.createElement('p');
+    imgPkmn.textContent = pkmn.name;
+    yourPkmnList.append(imgPkmn)
 }
 
 //open
