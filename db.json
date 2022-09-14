@@ -1,8 +1,24 @@
 {
   "pokemon": [
     {
-      "name": "pawniard",
-      "id": 624
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
+      "name": "gyarados",
+      "id": 130
+    },
+    {
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/594.png",
+      "name": "alomomola",
+      "id": 594
+    },
+    {
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/552.png",
+      "name": "krokorok",
+      "id": 552
+    },
+    {
+      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/575.png",
+      "name": "gothorita",
+      "id": 575
     }
   ]
 }
