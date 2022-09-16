@@ -1,4 +1,4 @@
-# Who's That Pokemon!
+# Who's That Pokemon?!
 This is a game where users can guess what pokemon is displayed to see if they're right or wrong!
 Correct pokemon get added to the box. The user can also see their best win streak and compare it to their current win streak. The current win streak resets with an incorrect guess.
 
