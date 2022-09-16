@@ -86,7 +86,7 @@ function playGame(pkmn){
     })
     liBst.textContent = "BST: " + bst;
 
-    console.log(pkmnName)
+    //console.log(pkmnName)
 
     //Event Listener - Answer Form
     answerForm.addEventListener('submit', handleAnswer);
